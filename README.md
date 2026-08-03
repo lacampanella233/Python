@@ -1,71 +1,157 @@
 # MathLab
 
-MathLab 是一个面向数学、理论物理与未来 AI-for-Math 学习的 Python 实验仓库。目标不是积累零散脚本，而是逐步学会编写可安装、可测试、可解释、可复现的科学计算软件。
+这个仓库用于系统学习 Python、科学计算和数学软件开发，并为以后研究理论物理与人工智能辅助数学打基础。
 
-## Prerequisites
+这里最重要的目标不是积累代码，而是逐渐做到：能独立写出程序，能判断结果是否正确，能解释设计理由，也能在需求变化时修改程序。
 
-- Windows 11 and PowerShell
-- Git
-- [uv](https://docs.astral.sh/uv/)
-- CPython 3.14（由 uv 按 `.python-version` 管理）
+## 最重要的学习原则
 
-## Install and synchronize
+1. **先独立尝试，再寻求帮助。** 短程序、基础练习、算法初版和测试用例应先由自己完成。
+2. **程序能运行不等于已经掌握。** 还要能够测试、解释和修改。
+3. **先求正确和清楚，再考虑简短或快速。** 不为炫技使用复杂写法，也不在没有测量前优化。
+4. **每个数学程序都要明确约定。** 写清定义、输入、输出、单位、符号、基底顺序和归一化方式。
+5. **错误是学习材料。** 不只记录正确答案，还要记录错误假设、修复方法和防止复发的测试。
+6. **数值吻合不是数学证明。** 始终区分符号恒等式、数值证据和严格证明。
 
-在仓库根目录运行：
+## 每次学习的具体流程
 
-```powershell
-uv python install
-uv sync
-```
+### 一、开始前
 
-这会创建仓库本地的 `.venv`，安装 MathLab、科学计算依赖和开发工具，并使用 `uv.lock` 保持环境可复现。
+1. 从[学习路线](docs/syllabus.md)中确定本次主题。
+2. 用一句话写下今天要解决的问题。
+3. 写下自己预计会用到的概念，不急着打开现有答案。
+4. 如果是数学或科学计算问题，先完成下面的准备清单：
+   - 数学定义和适用范围；
+   - 输入与输出的表示方式；
+   - 必须保持的性质或不变量；
+   - 普通、边界、无效和数值困难情况；
+   - 一个可以手算的小例子；
+   - 准备用哪些测试判断正确性。
 
-## Quality checks
+### 二、独立尝试
+
+1. 先写最直接、最容易检查的版本。
+2. 用手算例子逐行跟踪程序。
+3. 为正常情况、边界情况和错误输入编写测试。
+4. 运行测试，先观察实际结果，再修改代码。
+5. 如果失败，先写下自己的预测和最可能出错的位置。
+
+### 三、需要帮助时
+
+按下面的顺序向 Codex 求助，尽量不要一开始就索要完整答案：
+
+1. 请它指出相关概念或提出一个诊断问题。
+2. 请它给出反例或带你跟踪一次执行过程。
+3. 请它指出最值得检查的函数或几行代码。
+4. 请它提供伪代码或部分函数签名。
+5. 在自己认真尝试后，再请求最小修改方案。
+6. 只有在明确需要时，才请求完整实现；之后必须独立解释或重新写出。
+
+可以直接使用这些提问方式：
+
+- “先不要给答案，请指出我最可能误解的概念。”
+- “请给我一个能暴露问题的最小反例。”
+- “请只评审我的思路和测试，不要修改文件。”
+- “请按现象、错误假设、规则、修复和回归测试分析这个问题。”
+- “请检查数学正确性、数值稳定性和测试是否充分。”
+
+### 四、结束前
+
+1. 运行相关测试和质量检查。
+2. 不看代码，用自己的话解释算法和关键约定。
+3. 修改一个条件，确认自己仍能调整实现和测试。
+4. 在[学习进度](docs/progress.md)中记录独立完成和借助 Codex 完成的部分。
+5. 如果解决了一个重要误解，在[错误记录](docs/error_log.md)中留下条目。
+6. 写下一个尚未解决的问题和下一次最具体的行动。
+
+## 建议的每周节奏
+
+### 周初
+
+- 确定一个主要主题和一个可以完成的小成果。
+- 回顾上周的错误记录和未解决问题。
+- 为本周安排至少一次完全独立的练习。
+
+### 周中
+
+- 以短练习掌握概念，再把可复用内容放入正式代码。
+- 每发现一个缺陷，就补充一个能复现它的测试。
+- 保持笔记本用于探索，正式实现与测试分开保存。
+
+### 周末
+
+- 完成一次不看答案的回忆练习。
+- 用“运行、测试、解释、修改”四个层次评价本周内容。
+- 更新学习进度，只记录真实掌握的部分。
+- 选择下周需要继续巩固的一个薄弱点。
+
+## 如何判断自己是否掌握
+
+对每个重要主题依次检查四个层次：
+
+1. **运行：** 能让程序在一个代表性例子上运行。
+2. **测试：** 能自己设计正常、边界、错误和回归测试。
+3. **解释：** 能说明算法、约定、限制以及错误原因。
+4. **修改：** 面对新要求时，能预判影响并独立修改代码与测试。
+
+只有经过一段时间后仍能达到“修改”层次，才算真正掌握。每月应安排一次从空白文件开始的独立测试，具体方法见[评估标准](docs/assessment.md)。
+
+## 遇到错误时的处理顺序
+
+不要只寻找“正确的那一行”。按照以下顺序记录和分析：
+
+1. **现象：** 实际发生了什么？完整错误信息是什么？
+2. **最小复现：** 最少需要哪些代码才能再次出现？
+3. **错误假设：** 自己原本认为哪条规则成立？
+4. **相关规则：** Python、数学或数值计算真正遵循什么规则？
+5. **修复：** 为什么这个改动能够解决问题？
+6. **防止复发：** 什么测试可以保证问题不再悄悄出现？
+
+可直接复制[错误记录模板](docs/error_log.md)进行整理。
+
+## 仓库内容导航
+
+- `exercises`：短练习，优先独立完成。
+- `src/mathlab`：可以复用并经过测试的正式代码。
+- `tests`：验证行为、边界情况和数学性质的测试。
+- `projects`：特殊函数、角动量和薛定谔方程等长期项目。
+- `notebooks`：探索、推导、实验和展示。
+- `docs`：学习路线、进度、错误、概念清单和评估标准。
+
+常用文档：
+
+- [二十四周学习路线](docs/syllabus.md)
+- [每周学习记录](docs/progress.md)
+- [错误与误解记录](docs/error_log.md)
+- [概念自我解释清单](docs/concepts.md)
+- [掌握程度与项目评估](docs/assessment.md)
+
+## 最常用的操作
+
+运行测试：
 
 ```powershell
 uv run pytest
-uv run pytest --cov=mathlab --cov-report=term-missing
-uv run ruff check .
-uv run ruff format --check .
-uv run mypy src
-uv build
 ```
 
-可选地运行全部 pre-commit hooks：
-
-```powershell
-uv run pre-commit run --all-files
-```
-
-## Directory map
-
-```text
-exercises/   short, learner-authored Python exercises
-src/mathlab/ reusable and tested package code
-tests/       automated behavior tests
-projects/    longer mathematical and physical projects
-notebooks/   exploration and exposition, not reusable implementations
-docs/        syllabus, progress, errors, concepts, and assessments
-```
-
-## JupyterLab
-
-Start JupyterLab from the repository root:
+启动交互式学习环境：
 
 ```powershell
 uv run jupyter lab
 ```
 
-Keep exploration in notebooks, then move reusable computation into `src/mathlab` and add tests.
+环境或依赖发生变化后同步：
 
-## Learning rule
+```powershell
+uv sync
+```
 
-先独立完成练习的第一次实质性尝试，再请 Codex 提示、调试或评审。特别是短程序、核心算法的初版、基础测试设计和月度 blank-file test，应先在没有生成答案的情况下完成。
+提交前执行完整检查：
 
-## First session checklist
-
-1. Run `uv sync`.
-2. Run `uv run pytest` and read the five smoke tests.
-3. Explain the coefficient order and one Horner-method evaluation by hand.
-4. Open `docs/syllabus.md` and identify the current week.
-5. Create the first entry in `docs/progress.md` after completing independent work.
+```powershell
+uv run pytest
+uv run ruff check .
+uv run ruff format --check .
+uv run mypy src
+uv build
+```

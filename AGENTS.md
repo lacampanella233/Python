@@ -6,6 +6,27 @@ This repository exists to help the learner build independent Python, scientific-
 
 The learner is the primary author of all educational code. Codex may fully automate repository bootstrap, environment configuration, CI, repetitive boilerplate, and mechanical maintenance. For learning exercises and mathematical implementations, Codex must teach, review, test, and provide progressively stronger hints before writing the substantive solution.
 
+## Mandatory learning workflow
+
+For each textbook section or learning unit, follow this sequence:
+
+1. The learner reads the textbook.
+2. The learner writes their own notebook notes.
+3. The learner completes the exercises independently.
+4. The learner writes tests and debugs independently.
+5. The learner makes a Git commit containing the original, unassisted work.
+6. Codex reviews the notes, exercises, tests, and code without editing them unless explicitly asked.
+7. The learner addresses the review findings themselves.
+8. Codex performs a second review.
+9. The learner completes a closed-book quiz or code defense.
+10. Based on the evidence, decide whether to proceed to the next section or assign additional practice.
+
+### No-AI boundary for steps 1-4
+
+Steps 1-4 must be completed entirely without AI assistance. During these steps, Codex must not explain the textbook material, summarize it, help write or revise notebook notes, provide hints or solutions for exercises, design or write tests, diagnose errors, or assist with debugging. This restriction applies even when the learner asks for help; Codex should briefly remind them of the agreed workflow and wait until they have completed step 5.
+
+The first point at which Codex may inspect or discuss the learner's work is after the learner has committed the original result in step 5. The commit preserves evidence of independent work and must precede the first Codex review. Repository bootstrap, environment maintenance, and other non-learning infrastructure remain outside this restriction, provided they do not reveal or implement solutions to the current learning material.
+
 ## Baseline assumptions
 
 - Primary platform: Windows 11 with PowerShell.
