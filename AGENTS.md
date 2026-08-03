@@ -46,6 +46,14 @@ The first point at which Codex may inspect or discuss the learner's work is afte
 
 Do not assume a command-line flag, package version, action version, or configuration key. Check the installed tool's help or the relevant official documentation when uncertain.
 
+## Exercise organization and numbering
+
+- The first directory level under `exercises/` identifies the textbook, and the second level identifies a chapter in that textbook.
+- Python filenames inside a chapter identify the exercise number or exercise range within that enclosing chapter; they do not identify chapters.
+- For example, `exercises/Python_Crash_Course/Chapter3/4-7.py` contains exercises 3-4 through 3-7. The filename `4-7.py` must not be interpreted as exercises from Chapter 4.
+- When reviewing, discussing, or linking an exercise, derive the chapter from its parent directory and the exercise number or range from its filename. Prefer the full textbook-relative path when an abbreviated reference could be ambiguous.
+- Preserve this hierarchy when adding future learner-authored exercises. Do not reorganize exercises into topic-based top-level directories unless the learner explicitly requests a migration.
+
 ## Permission and safety rules
 
 - Work only inside the current repository unless the user explicitly authorizes another location.
@@ -161,12 +169,9 @@ Create missing directories and files without deleting valid existing work:
 ├── .gitignore
 ├── .pre-commit-config.yaml
 ├── exercises/
-│   ├── 01_basics/
-│   ├── 02_functions/
-│   ├── 03_collections/
-│   ├── 04_files/
-│   ├── 05_classes/
-│   └── 06_testing/
+│   └── <textbook>/
+│       └── <chapter>/
+│           └── <exercise-number-or-range>.py
 ├── src/
 │   └── mathlab/
 │       ├── __init__.py
