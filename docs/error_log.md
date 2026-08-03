@@ -1,29 +1,117 @@
-# Error and Misconception Log
+# 错误与误解日志
 
-Create one entry per meaningful debugging lesson. Keep the reproduction minimal and write the governing rule in your own words after confirming it.
+每个有意义的调试经验单独记录一项。复现代码应尽可能小；确认规则后，再用自己的话写下决定程序行为的规则。
 
-## YYYY-MM-DD — Short title
+## 记录边界
 
-### Symptom
+- 在学习单元步骤 1-4 中，本日志必须由学习者独立填写，Codex 不得帮助诊断、解释或修订。
+- 首次独立提交之后，可以把 Codex 审阅发现补充到新条目中，但必须注明发现阶段和协助范围。
+- 已有条目是学习证据，不应为了套用新模板而改写其事实内容。
+- 每个修复都尽量对应一个能够防止复发的测试或断言。
 
+## 2026-08-04 — 误以为整除结果会自动成为整数
 
-### Minimal reproduction
+### 现象
+
+在判断表达式 `2 + 3 * 4 ** 2 / 8` 的结果类型时，预期结果为整数 `8`，但 Python 实际得到浮点数 `8.0`。
+
+### 最小复现
 
 ```python
-# Smallest code that still shows the problem.
+result = 48 / 8
+print(result)
+print(type(result))
 ```
 
-### Incorrect assumption
+### 错误假设
 
+误以为当两个整数恰好整除时，Python 会根据结果没有小数部分而返回 `int`。
 
-### Governing rule
+### 决定行为的规则
 
+在 Python 3 中，运算符 `/` 执行真除法并返回 `float`，即使两个操作数都是整数且结果能够整除。`//` 执行向下取整除法，但其返回类型仍取决于操作数的类型。
 
-### Fix
+### 修正
 
+需要真除法时，接受并按浮点数处理 `/` 的结果。确实需要向下取整除法时使用 `//`；只有接口明确要求整数时，才在确认转换语义正确后使用 `int()`。
 
-### Prevention test
+### 预防测试
 
 ```python
-# Regression test or assertion that would catch the mistake.
+result = 48 / 8
+assert result == 6.0
+assert isinstance(result, float)
+```
+
+---
+## 2026-8-4 — 没有考虑列表删除元素后索引的变化
+
+### 现象
+
+在删除列表元素时, 没有考虑索引的变化, 导致删除错误的元素或索引超出范围.
+
+
+### 最小复现
+
+```python
+my_list = [1,2,3]
+
+# 希望删去前两个元素, 但是没有考虑索引变化
+del my_list[0]
+del my_list[1]
+
+print(my_list)
+```
+
+### 错误假设
+
+误以为索引没有变化
+
+
+### 决定行为的规则
+
+
+### 修正
+
+
+### 预防测试
+
+```python
+# 能够捕获该错误的回归测试或断言。
+```
+
+
+
+
+## YYYY-MM-DD — 简短标题
+
+### 学习单元与发现阶段
+
+- 对应章节或单元：
+- 发现阶段：独立学习 / 第一次审阅 / 学习者修正 / 第二次审阅 / 闭卷检验
+- 相关提交编号：
+- Codex 参与情况：无 / 只读审阅 / 明确说明其他参与
+
+### 现象
+
+
+### 最小复现
+
+```python
+# 仍能展示问题的最小代码。
+```
+
+### 错误假设
+
+
+### 决定行为的规则
+
+
+### 修正
+
+
+### 预防测试
+
+```python
+# 能够捕获该错误的回归测试或断言。
 ```

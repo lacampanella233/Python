@@ -1,37 +1,138 @@
-# Assessment Framework
+# 学习评估框架
 
-## Four mastery levels
+评估只针对学习者自己选择并提交的笔记、练习、测试和实现。未选择的教材内容不自动构成缺陷，也不能仅凭覆盖章节数量决定是否进入下一单元。
 
-1. **Runs:** The program executes on a representative example and produces plausible output. This is the starting level, not mastery.
-2. **Tests:** The learner can design and pass normal, boundary, invalid, regression, and invariant-based tests appropriate to the problem.
-3. **Explains:** The learner can justify the algorithm, trace an example, state conventions and limitations, and explain failures in their own words.
-4. **Modifies:** The learner can adapt the work to a new requirement, predict affected tests, and preserve correctness without copying a solution.
+## 单元完成门槛
 
-A topic is secure only when it reaches **modifies** after a delay, not merely when a guided implementation runs once.
+每个教材小节或学习单元必须留下以下证据：
 
-## Monthly blank-file test
+1. 阅读后的学习者原创 Notebook 笔记；
+2. 学习者自行选择并独立完成的练习；
+3. 适用时由学习者独立编写的测试和调试记录；
+4. Codex 首次接触之前的原始 Git 提交；
+5. Codex 第一次只读审阅记录；
+6. 学习者自行修正后的提交；
+7. Codex 第二次只读审阅记录；
+8. 闭卷问答、代码答辩或空白文件测试；
+9. “进入下一单元”或“增加练习”的明确决定。
 
-Once per month, start from a blank file without prior code, autocomplete-generated bodies, notes, or Codex. In 60-90 minutes:
+如果首次提交发生在 Codex 已经解释、提示或调试当前学习内容之后，该提交不能作为“未经 AI 协助的原始成果”证据，应重新选择一个等价的新任务完成独立验证。
 
-1. Restate a small problem and its input/output contract.
-2. Write a correct baseline implementation.
-3. Write representative, boundary, and invalid-input tests.
-4. Run the quality tools and repair failures.
-5. Explain one design choice and one likely extension aloud or in writing.
+## 四个掌握层级
 
-After the attempt, compare against earlier work, record independent and assisted portions in `progress.md`, and add resolved misconceptions to `error_log.md`. A failed test is diagnostic evidence, not a reason to erase or weaken the test.
+1. **能运行：** 在代表性输入上得到结果。这只是最低要求，不算掌握。
+2. **会测试：** 能主动提出并验证正常、边界、无效、退化、回归和数值困难情况，算部分掌握。
+3. **能解释：** 能说明数据流、状态变化、接口责任、终止条件、复杂度、数学约定和误差来源，算掌握。
+4. **会修改：** 能在不依赖 Codex 的情况下加入新要求、保持旧行为、补充测试并完成小型重构，才算真正掌握。
 
-## Project rubric (100 points)
+一个主题只有在延迟一段时间后仍能达到“会修改”，才视为稳固。
 
-| Category | Points | Evidence |
+## 第一次与第二次审阅的职责
+
+### 第一次审阅
+
+Codex 检查学习者实际写出的内容，按优先级报告：
+
+1. 概念或数学错误；
+2. Python 语义错误；
+3. 测试无法证明预期行为的地方；
+4. 数值稳定性与边界风险；
+5. 接口、类型和可读性问题。
+
+教材中未被学习者选择的内容不能列为正确性缺陷。只有特别重要的前置概念可以放入独立的“可选高价值提醒”部分。
+
+### 第二次审阅
+
+Codex 重点确认：
+
+- 原问题是否真正解决；
+- 修正是否引入新问题；
+- 学习者是否补充了合理证据；
+- 是否可以进入闭卷检验。
+
+两轮审阅默认都不编辑文件，除非学习者明确要求。
+
+## 闭卷问答与代码答辩
+
+可以从以下问题中抽取适合当前单元的部分：
+
+- 这段代码的输入、输出和失败条件是什么？
+- 一次具体输入经过了哪些状态变化？
+- 为什么选择这种数据结构或接口？
+- 哪个测试覆盖边界或回归问题？
+- 算法为什么终止？复杂度如何？
+- 数学对象采用了哪些符号、单位、基底或归一化约定？
+- 浮点容差或数值误差的依据是什么？
+- 如果改变一个要求，哪些代码和测试会受到影响？
+
+答辩不能使用 Codex。是否允许查看教材、笔记或现有代码，应在开始前明确。
+
+## 每四周空白文件测试
+
+每四周至少一次，从空文件或空目录开始，不查看旧代码、笔记、生成式自动补全或 Codex，在 90-120 分钟内：
+
+1. 重新表述一个已学过的小问题及输入输出约定；
+2. 写出正确、透明的基线实现；
+3. 编写正常、边界和无效输入测试；
+4. 运行适合该阶段的质量检查并修复失败；
+5. 解释一个设计选择；
+6. 现场完成一个小变式。
+
+测试后在 `progress.md` 中记录结果，在 `error_log.md` 中记录暴露出的错误假设。测试失败是诊断证据，不能通过删除测试、任意放宽容差或压制警告来掩盖。
+
+## 阶段评估建议
+
+| 时间 | 建议形式 | 重点 |
+| --- | --- | --- |
+| 第 4 周 | 90 分钟空白文件测试 | 教材第 2-7 章中学习者实际选择的核心内容 |
+| 第 8 周 | 120 分钟包与测试答辩 | 函数、类、文件、异常、测试、Git 与质量工具 |
+| 第 13 周 | 科学计算项目审阅 | 数组语义、误差、绘图分离、可信结果比较 |
+| 第 18 周 | 角动量项目答辩 | 数学约定、不变量、测试、API 和数值可靠性 |
+| 第 22 周 | 可复现实验与自动微分答辩 | 可复现性、复杂度、梯度检查和结果边界 |
+| 第 24 周 | 结业项目现场修改 | 独立解释、修复或增加一个小需求 |
+
+具体题目应在考核开始时给出，不能提前向 Codex 索取答案或隐藏测试。
+
+## AI 依赖审计
+
+每次阶段评估都应区分：
+
+- 完全独立完成；
+- Codex 提示后由学习者完成；
+- 与 Codex 共同完成；
+- Codex 生成、之后由学习者独立解释或复现。
+
+只有能够独立解释并在新情境中复现的内容，才能作为个人能力证据。
+
+## 项目评分标准（100 分）
+
+评分表采用 24 周路线 PDF 的权重：
+
+| 类别 | 分值 | 评价重点 |
 | --- | ---: | --- |
-| Mathematical correctness | 25 | Definitions, conventions, hand-computable examples, and valid conclusions |
-| Tests and invariants | 20 | Normal, boundary, invalid, regression, and domain-invariant coverage |
-| Numerical reliability | 15 | Shapes, dtypes, tolerances, conditioning, convergence, and difficult cases |
-| Software design and API | 15 | Small responsibilities, clear interfaces, types, exceptions, and package structure |
-| Reproducibility | 10 | Locked environment, explicit seeds, recorded configuration, and repeatable commands |
-| Explanation and documentation | 10 | Rationale, assumptions, limitations, usage, and interpretation in the learner's own words |
-| Independent modification | 5 | A new requirement completed without copying the original implementation |
-| **Total** | **100** | |
+| 功能与数学正确性 | 30 | 定义、约定、不变量和正确结果 |
+| 测试质量 | 20 | 正常、边界、错误、回归和数值困难情况 |
+| 接口与代码结构 | 15 | 模块职责、抽象边界、类型和可读性 |
+| 可复现性 | 10 | 环境、随机种子、命令、数据来源和结果记录 |
+| 文档 | 10 | README、docstring、数学说明、局限与复现方法 |
+| Git 历史 | 5 | 小步、聚焦、能区分独立工作与后续修正 |
+| 错误处理 | 5 | 清晰异常、输入验证和防复发测试 |
+| 独立解释与修改 | 5 | 脱离 Codex 完成答辩和现场任务 |
+| **总分** | **100** | |
 
-Suggested interpretation: 90-100 independent and robust; 75-89 sound with limited gaps; 60-74 functional but not yet secure; below 60 requires a smaller baseline and renewed testing. A severe mathematical error or irreproducible result cannot receive a mastery rating regardless of the numeric total.
+建议标准：70 分表示基本合格；80 分可以进入下一阶段；90 分以上适合公开展示。严重数学错误、核心结果不可复现或无法独立解释时，无论数字总分多少，都不能判定为已经掌握。
+
+## 单元评估记录模板
+
+### 单元：__________
+
+- 评估日期：
+- 学习者选择的范围：
+- 首次独立提交：
+- 第一次审阅：
+- 修正提交：
+- 第二次审阅：
+- 闭卷检验形式与结果：
+- 当前层级：能运行 / 会测试 / 能解释 / 会修改
+- 决定：进入下一单元 / 增加练习
+- 决定依据：

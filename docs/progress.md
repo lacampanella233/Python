@@ -1,33 +1,130 @@
-# Weekly Progress Log
+# 学习进度记录
 
-Copy the template below for each week. Record assistance accurately; do not mark generated or co-developed work as independent.
+本文件记录学习证据，不追求“完成了多少页”。每个教材小节或学习单元完成一次完整流程后，复制一份“单元记录模板”；每周结束时再填写“每周复盘模板”。
 
-## Week __ — YYYY-MM-DD to YYYY-MM-DD
+学习者决定记录哪些概念、完成哪些习题。未选择的内容不自动构成进度缺口。
 
-### Learned concepts
+## 记录规则
+
+- 步骤 1-4 完全不使用 AI：阅读、笔记、选做练习、测试与调试均由学习者独立完成。
+- 第一次 Codex 审阅必须发生在原始成果提交之后。
+- 不得把提示后完成、共同完成或 Codex 生成的内容写成独立完成。
+- Codex 只审阅学习者实际选择的范围；可选的重要遗漏应与正确性问题分开记录。
+- 提交编号、测试结果和答辩结论应填写真实值，不能预先编造。
+
+---
+
+## 学习单元记录模板
+
+### 单元：__________
+
+- 对应周次：第 __ 周
+- 教材章节或资料：
+- 开始日期：
+- 完成日期：
+
+#### 学习者选择的范围
+
+- 我决定记录的概念：
+- 我决定完成的练习：
+- 本单元明确不做的内容（可留空）：
+
+#### 步骤 1-4：无 AI 独立阶段
+
+- 阅读范围：
+- Notebook 笔记路径：
+- 练习或代码路径：
+- 测试路径与实际结果：
+- 独立调试过的错误：
+- 我仍不确定的问题：
+
+#### 步骤 5：首次审阅前提交
+
+- 提交编号：
+- 提交信息：
+- 提交中包含的独立成果：
+
+#### 步骤 6：Codex 第一次审阅
+
+- 审阅日期：
+- 正确性发现：
+- 测试、接口或表达方面的发现：
+- 可选的高价值遗漏提醒（与缺陷分开，可留空）：
+- 本轮 Codex 是否修改文件：否；只有学习者明确要求时才能改为“是”
+
+#### 步骤 7：学习者自行修正
+
+- 我接受并处理的意见：
+- 我不同意或暂不处理的意见及理由：
+- 修正提交编号：
+- 修正后的实际检查结果：
+
+#### 步骤 8：Codex 第二次审阅
+
+- 审阅日期：
+- 已解决的问题：
+- 仍存在的问题：
+- 是否具备进入闭卷检验的条件：
+
+#### 步骤 9：闭卷问答或代码答辩
+
+- 形式：闭卷问答 / 代码答辩 / 空白文件测试 / 其他
+- 日期与时长：
+- 禁止使用的资料或工具：
+- 能独立解释或实现的内容：
+- 暴露出的薄弱点：
+- 证据路径或提交编号：
+
+#### 步骤 10：单元决定
+
+- 决定：进入下一单元 / 增加练习后复核
+- 判断依据：
+- 若增加练习，具体任务和复核日期：
+
+#### AI 参与审计
+
+- 完全独立完成：
+- 提示后完成：
+- 与 Codex 共同完成：
+- Codex 生成、之后由我独立解释或复现：
+
+---
+
+## 每周复盘模板
+
+### 第 __ 周：YYYY-MM-DD 至 YYYY-MM-DD
+
+#### 本周学习单元
 
 -
 
-### Independent work
+#### 已完成的完整流程
 
-- Work completed before hints or generated code:
-- Evidence (exercise, test, explanation, or commit):
+- 已完成到第几步：
+- 对应首次独立提交：
+- 审阅和答辩证据：
 
-### Codex-assisted work
-
-- Assistance level: written after hints / co-developed / generated then independently explained or reproduced
-- What Codex contributed:
-- What I can now reproduce without assistance:
-
-### Errors and misconceptions
-
-- Error-log entry or short summary:
-
-### Unresolved questions
+#### 学到的概念
 
 -
 
-### Next-week actions
+#### 独立完成的工作
+
+-
+
+#### Codex 参与的工作
+
+-
+
+#### 错误与已经修正的假设
+
+- 对应 `error_log.md` 条目：
+
+#### 尚未解决的问题
+
+-
+
+#### 下周行动
 
 1.
 2.

@@ -1,50 +1,150 @@
-# Concepts to Explain in Your Own Words
+# 用自己的话解释的概念清单
 
-Do not copy definitions into this file. Check an item only after explaining it from memory, giving an example, and answering a follow-up modification question.
+本文件不是必修覆盖清单，也不提供概念答案。学习者从当前单元中选择自己认为值得记录的概念；只有在能够闭卷解释、举例并回答变式问题后，才勾选对应项目。
 
-## Python core
+未勾选不自动表示学习单元失败。Codex 审阅时主要检查学习者已经写出的解释是否正确、精确并且内部一致。
 
-- [ ] Names, objects, identity, equality, and mutability
-- [ ] Truth values and short-circuit evaluation
-- [ ] Function arguments, return values, and scope
-- [ ] Iterables, iterators, and generators
-- [ ] Lists, tuples, dictionaries, and sets
-- [ ] Exceptions and context managers
-- [ ] Imports and module execution
+## 教材第 2 章：变量和简单数据类型
 
-## Software engineering
+- [ ] 名称、对象和变量赋值
+- [ ] 字符串及常见字符串操作
+- [ ] 整数、浮点数和运算结果类型
+- [ ] 注释的作用与适当粒度
+- [ ] Python 2 与 Python 3 行为差异中仍有现实意义的部分
 
-- [ ] Package boundaries and public APIs
-- [ ] Preconditions, postconditions, and invariants
-- [ ] Unit, boundary, invalid-input, and regression tests
-- [ ] Static typing versus runtime behavior
-- [ ] Git commits, branches, and continuous integration
-- [ ] Reproducibility and dependency locking
+## 教材第 3 章：列表简介
 
-## Scientific computing
+- [ ] 列表的顺序、索引和负索引
+- [ ] 修改、添加和删除元素的不同方式
+- [ ] 临时排序与永久排序
+- [ ] 列表长度与索引错误
+- [ ] 可变对象带来的行为
 
-- [ ] Array shape, dtype, axes, broadcasting, copies, and views
-- [ ] Floating-point representation, scale, and tolerances
-- [ ] Conditioning, stability, and convergence
-- [ ] Why solving a linear system is preferable to forming an inverse
-- [ ] Random generators, seeds, and reproducible experiments
-- [ ] Symbolic identity, numerical evidence, and mathematical proof
-- [ ] Separation of computation and visualization
+## 教材第 4 章：操作列表
 
-## Mathematical physics
+- [ ] `for` 循环中的迭代变量与循环体
+- [ ] `range` 和数值列表
+- [ ] 列表推导式
+- [ ] 切片及切片复制
+- [ ] 元组与不可变性
+- [ ] 缩进和代码格式对语义的影响
 
-- [ ] Basis order, units, signs, phases, and normalization conventions
-- [ ] Hermitian operators and real expectation values
-- [ ] Commutators and angular-momentum algebra
-- [ ] Ladder operators and boundary states
-- [ ] Tensor products and subsystem operators
-- [ ] Coupled and uncoupled angular-momentum bases
+## 教材第 5 章：`if` 语句
 
-## Algorithms and AI-for-Math foundations
+- [ ] 比较、真值和布尔表达式
+- [ ] 成员检查
+- [ ] `if`、`if-else` 与 `if-elif-else` 的选择
+- [ ] 多个独立条件与互斥条件链的区别
+- [ ] 对列表或其他容器进行条件处理
 
-- [ ] Time and space complexity
-- [ ] Profiling before optimization
-- [ ] Computational graphs and automatic differentiation
-- [ ] Forward-mode and reverse-mode differentiation
-- [ ] Gradient checks and differentiability assumptions
-- [ ] What a machine-learning result does and does not establish mathematically
+## 教材第 6 章：字典
+
+- [ ] 键、值与键值对
+- [ ] 添加、修改和删除键值对
+- [ ] 遍历键、值或键值对
+- [ ] 字典与列表的选择理由
+- [ ] 列表嵌套字典、字典嵌套列表和字典嵌套字典
+
+## 教材第 7 章：用户输入和 `while` 循环
+
+- [ ] 输入结果的类型与显式转换
+- [ ] `while` 循环的状态变化与终止条件
+- [ ] 标志、`break` 与 `continue`
+- [ ] 避免无限循环的方法
+- [ ] 在列表之间移动元素
+- [ ] 根据条件删除容器中的元素
+
+## 教材第 8 章：函数
+
+- [ ] 函数的职责、输入与返回值
+- [ ] 位置实参、关键字实参和默认值
+- [ ] 返回简单值、字典或其他复合结果
+- [ ] 传递可变对象时的修改行为
+- [ ] 任意数量的位置实参和关键字实参
+- [ ] 模块、导入方式和公共名称
+- [ ] 函数说明文档应回答的问题
+
+## 教材第 9 章：类
+
+- [ ] 类、实例、属性和方法
+- [ ] 初始化过程与默认状态
+- [ ] 实例状态如何被修改和保护
+- [ ] 继承、方法重写与组合
+- [ ] 何时使用类，何时使用普通函数
+- [ ] 从模块导入类
+
+## 教材第 10 章：文件和异常
+
+- [ ] 路径与文件内容的区别
+- [ ] 当前 `pathlib` 工作流
+- [ ] 读取整个文件与逐行处理
+- [ ] 写入、覆盖和追加
+- [ ] 异常的触发、捕获和传播
+- [ ] `try-except-else` 各部分的职责
+- [ ] JSON 序列化与反序列化
+- [ ] 输入验证与清晰错误信息
+
+## 教材第 11 章：测试代码
+
+- [ ] 测试用例与被测试行为
+- [ ] 正常、边界、无效和回归情况
+- [ ] 测试函数与测试类
+- [ ] 测试准备工作和共享数据
+- [ ] 测试行为而不是实现细节
+- [ ] 测试失败、测试错误和未收集测试的区别
+- [ ] 教材测试工具与 pytest 工作流的对应关系
+
+## 工程补充
+
+- [ ] 模块、包、`src` 布局和公共接口
+- [ ] 类型标注与运行时检查的区别
+- [ ] Ruff、mypy、pytest 和构建工具各自检查什么
+- [ ] Git 工作区、暂存区、提交与分支
+- [ ] 首次独立提交为什么必须早于 Codex 审阅
+- [ ] 依赖锁定与可复现环境
+- [ ] 持续集成与本地检查的关系
+
+## 科学计算
+
+- [ ] NumPy 数组的形状、数据类型、轴和索引
+- [ ] 广播规则及形状不匹配
+- [ ] 复制与视图
+- [ ] 浮点数表示、尺度与容差
+- [ ] 条件数、稳定性、残差与收敛
+- [ ] 为什么通常应解线性方程组而不是显式求逆
+- [ ] 随机数生成器、随机种子与可复现实验
+- [ ] 计算逻辑与绘图逻辑的分离
+- [ ] 符号恒等式、数值证据与数学证明的区别
+
+## 数学物理与角动量项目
+
+- [ ] 基底顺序、单位、符号、相位与归一化约定
+- [ ] Hermitian 算符与实数期望值
+- [ ] 对易子与角动量代数
+- [ ] 升降算符与边界态
+- [ ] 张量积与子系统算符
+- [ ] 耦合与非耦合基底
+- [ ] singlet/triplet 态
+- [ ] 密度矩阵与约化密度矩阵
+- [ ] 测量概率、关联函数和无信号条件
+
+## 可复现算法与 AI for Math 前置
+
+- [ ] 时间复杂度与空间复杂度
+- [ ] 透明基线、性能分析与有依据的优化
+- [ ] 实验配置、数据来源和结果记录
+- [ ] 计算图与自动微分
+- [ ] 前向模式与反向模式微分
+- [ ] 有限差分与梯度检查
+- [ ] 可微性假设
+- [ ] 机器学习结果在数学上能够说明什么、不能说明什么
+
+## 可选教材项目
+
+只有在学习者选择相应项目时才使用本节：
+
+- [ ] 事件循环、游戏状态和对象协作（第 12-14 章）
+- [ ] 数据生成、随机漫步和可视化选择（第 15 章）
+- [ ] CSV、JSON、数据清理和数据来源（第 16 章）
+- [ ] API 请求、响应、失败处理和数据验证（第 17 章）
+- [ ] Web 模型、路由、视图、模板和用户数据边界（第 18-20 章）

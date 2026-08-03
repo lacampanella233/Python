@@ -1,50 +1,133 @@
-# 24-Week Learning Roadmap
+# 24 周学习路线
 
-Week 0 is an environment and workflow orientation. Weeks 1-24 are the 24 teaching weeks. Each phase ends with a small assessment that must be attempted independently before review.
+## 编排依据与使用顺序
 
-## Phase 1 — Python core language (Weeks 0-4)
+本路线同时依据三类材料：
 
-- **Week 0 — Environment and workflow:** uv, the `src` layout, running tests, reading tracebacks, Git status, and the independent-work rule.
-- **Week 1 — Values and control flow:** scalar types, expressions, names, conditionals, loops, and small hand traces.
-- **Week 2 — Functions:** parameters, return values, scope, docstrings, decomposition, and pure functions.
-- **Week 3 — Collections:** lists, tuples, dictionaries, sets, iteration patterns, comprehensions, and complexity intuition.
-- **Week 4 — Files and errors:** `pathlib`, context managers, parsing text, exceptions, and a blank-file core-Python assessment.
+1. 仓库中的[《Python 编程：从入门到实践》PDF](<Python编程  从入门到实践 (Eric Matthes) (z-library.sk, 1lib.sk, z-lib.sk).pdf>)目录；
+2. 仓库中的[《用 Codex 系统学习 Python：24 周学习路线》PDF](Python_Codex_24周学习路线.pdf)；
+3. 根目录 `AGENTS.md` 规定的强制学习流程。
 
-## Phase 2 — Software engineering foundations (Weeks 5-8)
+出现冲突时，按以下顺序处理：
 
-- **Week 5 — Modules and packages:** imports, public APIs, `src` layout, package metadata, and dependency boundaries.
-- **Week 6 — Classes and data modeling:** state, invariants, dataclasses, composition, and when a function is preferable.
-- **Week 7 — Tests and debugging:** pytest, parametrization, boundary cases, regression tests, debugger use, and assertions.
-- **Week 8 — Typing and CI:** annotations, mypy, Ruff, pre-commit, GitHub Actions, and a small packaged project review.
+1. `AGENTS.md` 决定学习与 AI 协作边界；
+2. 实际教材目录决定前八周的阅读顺序；
+3. 24 周路线 PDF 决定阶段目标、科学计算主线和项目方向。
 
-## Phase 3 — Scientific Python (Weeks 9-13)
+仓库中的教材是较早版本，其基础部分为第 1-11 章，后面依次是“外星人入侵”“数据可视化”和“Web 应用程序”三个项目。这与路线 PDF 所写的第三版并不相同，因此这里以仓库中实际存在的教材为准。
 
-- **Week 9 — NumPy fundamentals:** arrays, shape, dtype, axes, indexing, copies, views, and broadcasting.
-- **Week 10 — Numerical linear algebra:** vector and matrix operations, conditioning, decompositions, and solving systems without explicit inverses.
-- **Week 11 — Matplotlib:** separating computation from plotting, labeled figures, scales, uncertainty, and reproducible visualizations.
-- **Week 12 — SciPy:** integration, optimization, interpolation, differential equations, tolerances, and convergence checks.
-- **Week 13 — SymPy:** exact expressions, assumptions, simplification, symbolic identities, lambdification, and the boundary between proof and numerical evidence.
+第 0 周是准备周；第 1-24 周为 24 个正式学习周。周数是节奏参考，不是强制截止日期。某个学习单元没有通过评估时，可以延长，不需要为了追赶周数而跳过独立练习。
 
-## Phase 4 — Angular-momentum toolkit (Weeks 14-18)
+## 每个学习单元的强制流程
 
-- **Week 14 — Mathematical conventions:** basis order, units, normalization, commutators, Hermiticity, and hand-computable spin-1/2 cases.
-- **Week 15 — Operator construction:** ladder operators and Cartesian angular-momentum matrices with invariant tests.
-- **Week 16 — Tensor products:** coupled and uncoupled bases, Kronecker products, dimension checks, and subsystem operators.
-- **Week 17 — Coupling coefficients:** Clebsch-Gordan coefficients, phase conventions, orthogonality, and symbolic-versus-numerical validation.
-- **Week 18 — Toolkit integration:** a minimal public API, documentation, performance measurement, project rubric, and independent modification task.
+学习单元可以是一节、若干相关小节或学习者自行确定的一个主题。学习者决定记录哪些概念、完成哪些习题；没有选择的内容不自动构成缺陷。
 
-## Phase 5 — Reproducible algorithms and introductory ML (Weeks 19-22)
+每个单元都必须依次完成：
 
-- **Week 19 — Reproducible experiments:** explicit random generators and seeds, configuration, data provenance, result tables, and repeatable plots.
-- **Week 20 — Algorithms:** complexity, profiling, transparent baselines, vectorization after correctness, and measured optimization.
-- **Week 21 — Automatic differentiation:** computational graphs, forward and reverse modes, finite-difference checks, and differentiability assumptions.
-- **Week 22 — Introductory PyTorch:** tensors, autograd, a small optimization problem, and tests against NumPy or analytic results. Begin only after the core scientific stack is secure.
+1. 学习者阅读教材或指定资料；
+2. 学习者独立撰写自己的 Notebook 笔记；
+3. 学习者独立完成自己选择的练习；
+4. 学习者独立编写测试并调试；
+5. 学习者提交未经 AI 协助的原始成果；
+6. Codex 进行第一次只读审阅；
+7. 学习者亲自处理审阅意见；
+8. Codex 进行第二次只读审阅；
+9. 学习者完成闭卷问答、代码答辩或空白文件测试；
+10. 根据证据决定进入下一单元或增加练习。
 
-## Phase 6 — Independent capstone (Weeks 23-24)
+步骤 1-4 完全禁止 AI 参与。首次提交之前，Codex 不解释教材、不检查笔记、不提示习题、不设计测试，也不协助调试。基础设施维护不受此限制，但不得泄露当前学习内容的答案。
 
-- **Week 23 — Capstone design and baseline:** choose a mathematical question, specify definitions and invariants, design tests, plan reproducibility, and implement a transparent baseline.
-- **Week 24 — Validation and communication:** difficult cases, comparison with trusted results, quality checks, written limitations, independent demonstration, and final rubric review.
+## 教材章节与路线的对应关系
 
-## Phase completion evidence
+| 教材部分 | 本路线位置 | 处理方式 |
+| --- | --- | --- |
+| 第 1 章 起步 | 第 0 周 | 选择性阅读；环境安装说明已过时，以当前仓库环境为准 |
+| 第 2 章 变量和简单数据类型 | 第 1 周 | 主线 |
+| 第 3-4 章 列表及其操作 | 第 2 周 | 主线，可拆成两个学习单元 |
+| 第 5-6 章 `if` 语句与字典 | 第 3 周 | 主线，可拆成两个学习单元 |
+| 第 7 章 用户输入和 `while` 循环 | 第 4 周 | 主线 |
+| 第 8 章 函数 | 第 5 周 | 主线，同时衔接模块与接口 |
+| 第 9 章 类 | 第 6 周 | 主线 |
+| 第 10 章 文件和异常 | 第 7 周 | 主线；路径操作补充学习 `pathlib` |
+| 第 11 章 测试代码 | 第 8 周 | 主线；再衔接 pytest、类型与 CI |
+| 第 12-14 章 外星人入侵 | 可选项目 | 不作为进入科学计算阶段的前置要求 |
+| 第 15 章 生成数据 | 第 11 周参考 | 选择 Matplotlib 与随机漫步相关内容；Pygal 内容可选 |
+| 第 16 章 下载数据 | 第 12 或 19 周参考 | 作为 CSV、JSON、数据来源和可复现性练习 |
+| 第 17 章 使用 API | 第 19 周参考 | 可选的数据采集练习，使用当前 API 文档 |
+| 第 18-20 章 Django | 可选项目 | 与当前数学、物理主线关系较弱，不是必修 |
+| 附录 D 使用 Git | 第 0、8 周 | 高价值补充；与当前 Git 工作流对照学习 |
 
-For each phase, retain tests, a brief progress entry, important mistakes in the error log, and an explanation of one central concept in the learner's own words. Passing means more than obtaining output: the learner should be able to test, explain, and modify the work.
+教材中的 Python 版本、编辑器、安装命令、Pygal、Django 和 Heroku 操作可能已经过时。概念仍可选择学习，但具体命令必须以当前项目配置和官方文档为准。
+
+## 第 0-8 周：教材主线与工程基础
+
+| 周 | 阅读与学习单元 | 能力重点 | 本周证据 |
+| --- | --- | --- | --- |
+| 第 0 周 | 第 1 章中与运行程序、识别错误有关的部分；附录 D；仓库 README | 能说明仓库、环境、Git 提交和质量检查的用途 | 环境检查通过；能解释现有目录与工具，不要求重做 bootstrap |
+| 第 1 周 | 第 2 章：变量和简单数据类型 | 名称、字符串、数字、注释以及表达式结果的类型 | 自选笔记、练习、测试和首次独立提交；之后完成两轮审阅与闭卷问答 |
+| 第 2 周 | 第 3-4 章：列表简介、操作列表 | 列表的创建与修改、遍历、数值列表、切片、元组 | 至少完成一个第 3 章单元和一个第 4 章单元的完整十步流程 |
+| 第 3 周 | 第 5-6 章：条件判断、字典 | 布尔条件、分支、字典操作、遍历与嵌套 | 用自己的选择说明何时采用列表或字典；范围由学习者决定 |
+| 第 4 周 | 第 7 章：用户输入和 `while` 循环 | 输入转换、循环状态、退出条件以及容器之间的数据移动 | 完成第一次闭卷小程序或空白文件测试，并进行阶段决策 |
+| 第 5 周 | 第 8 章：函数 | 参数、返回值、可选参数、任意数量实参、模块 | 将一个自己选择的练习组织为清晰函数；提交后审阅接口与测试 |
+| 第 6 周 | 第 9 章：类 | 实例、属性、方法、继承、组合与导入 | 比较函数与类两种设计；类只在需要保存状态或不变量时使用 |
+| 第 7 周 | 第 10 章：文件和异常 | 文件读取与写入、路径、异常、JSON 数据 | 使用当前 `pathlib` 工作流；测试正常、缺失和无效数据情况 |
+| 第 8 周 | 第 11 章：测试代码；附录 D；pytest、类型与 CI 的补充资料 | 测试用例、测试类、准备测试数据、包结构、类型和自动检查 | 从空目录完成一次限时工程化验收，或对已有小项目完成代码答辩 |
+
+前八周以教材第一部分为主。书中项目和练习只是候选材料，学习者自行选择；Codex 审阅的是已选择内容的正确性，而不是教材覆盖率。
+
+## 第 9-13 周：科学计算基础
+
+此阶段不再以教材为唯一主线。先独立阅读 Scientific Python Lectures 或相关官方文档，再按强制流程完成自己的笔记和练习。
+
+| 周 | 主线 | 教材衔接 | 阶段产物 |
+| --- | --- | --- | --- |
+| 第 9 周 | NumPy：数组、形状、数据类型、轴、索引、复制、视图、广播与随机数生成器 | 可选用第 15 章随机漫步作为数据来源，但实现应使用当前工具 | 纯 Python 与 NumPy 方法的对照实验 |
+| 第 10 周 | 数值线性代数：矩阵运算、线性方程组、本征问题、范数、条件数与浮点误差 | 无直接对应章节 | 一个包含维度、Hermitian 性或残差检查的小实验 |
+| 第 11 周 | Matplotlib：图形对象、坐标轴、尺度、标签、误差表达和图形保存 | 第 15 章 15.1-15.3 可作参考；Pygal 部分可选 | 计算与绘图分离的可复现图形 |
+| 第 12 周 | SciPy：积分、求根、优化、插值、微分方程、稀疏矩阵和特殊函数 | 第 16 章可作 CSV/JSON 数据输入练习 | 数值结果与手算、解析结果或可信库结果比较 |
+| 第 13 周 | SymPy：精确表达式、假设、化简、微积分、方程、矩阵与数值化 | 无直接对应章节 | 特殊函数数值实验的第一个可审阅版本与阶段答辩 |
+
+阶段项目从实际数学物理问题中选择一个特殊函数，比较定义式、递推式、可信库实现或渐近行为中的若干项。具体范围由学习者确定，不要求穷尽所有表示。
+
+## 第 14-18 周：量子角动量工具包
+
+| 周 | 主题 | 主要证据 |
+| --- | --- | --- |
+| 第 14 周 | 基底顺序、单位、相位、归一化、Hermitian 性和对易关系 | 写明全部约定，并完成可手算的低维例子 |
+| 第 15 周 | `J_z`、`J_+`、`J_-`、`J_x`、`J_y` 与 `J^2` | 测试矩阵维度、Hermitian 性、对易关系和谱 |
+| 第 16 周 | 张量积、复合系统与子系统算符 | 测试维度、归一化与子系统作用位置 |
+| 第 17 周 | singlet/triplet、耦合基底和 Clebsch-Gordan 系数 | 明确相位约定，检查正交性和完备性 |
+| 第 18 周 | 测量概率、密度矩阵、约化态、关联函数与项目整合 | 完成两轮审阅、代码答辩和 100 分项目评估 |
+
+每项功能仍从独立阅读与笔记开始，提交原始实现后 Codex 才能审阅。路线 PDF 中给出的功能顺序是项目候选范围，不要求学习者在一次迭代中全部实现。
+
+## 第 19-22 周：可复现算法与 AI for Math 前置
+
+| 周 | 主题 | 主要证据 |
+| --- | --- | --- |
+| 第 19 周 | 随机种子、配置、数据来源、结果目录与实验复现 | 同一配置可重复得到一致结果；第 16-17 章可作数据来源参考 |
+| 第 20 周 | 算法与复杂度、性能分析和正确后再优化 | 对一个透明基线进行测量，再决定是否优化 |
+| 第 21 周 | 计算图、自动微分、有限差分检查和可微性假设 | 将解析导数、有限差分和自动微分进行对照 |
+| 第 22 周 | PyTorch 张量、自动求导与小型数学/物理实验 | 只有核心科学计算阶段稳固后才进入；完成独立答辩 |
+
+## 第 23-24 周：独立结业项目
+
+| 周 | 主题 | 主要证据 |
+| --- | --- | --- |
+| 第 23 周 | 需求、非目标、数学定义、接口、测试方案和透明基线 | 先提交无 AI 的需求理解、测试设想和基线尝试，再接受审阅 |
+| 第 24 周 | 困难情况、数值验证、可复现运行、报告和现场修改 | 独立仓库、测试、示例 Notebook、技术报告、代码答辩与现场修改 |
+
+推荐方向包括一维定态 Schrödinger 方程求解器、特殊函数实验库、有限维量子系统模拟器、数学表达式数据生成与验证工具或数值线性代数实验平台。最终选题由学习者决定。
+
+## 阶段完成证据
+
+进入下一阶段前，至少应能提供：
+
+- 一个或多个首次审阅前的独立提交；
+- 第一次审阅记录和学习者自己的修正提交；
+- 第二次审阅结论；
+- 闭卷问答、代码答辩或空白文件测试记录；
+- 对独立完成与 Codex 参与范围的真实说明；
+- “进入下一单元”或“增加练习”的明确决定。
+
+没有选择的教材内容不计为缺陷。决定是否前进时，只评估学习者实际选择并提交的笔记、练习、测试和实现。
