@@ -11,15 +11,21 @@ The learner is the primary author of all educational code. Codex may fully autom
 For each textbook section or learning unit, follow this sequence:
 
 1. The learner reads the textbook.
-2. The learner writes their own notebook notes.
-3. The learner completes the exercises independently.
-4. The learner writes tests and debugs independently.
+2. The learner writes their own notebook notes, selecting the concepts they consider worth recording.
+3. The learner independently completes the exercises they choose as valuable practice.
+4. The learner writes tests and debugs independently for the selected work when applicable.
 5. The learner makes a Git commit containing the original, unassisted work.
 6. Codex reviews the notes, exercises, tests, and code without editing them unless explicitly asked.
 7. The learner addresses the review findings themselves.
 8. Codex performs a second review.
 9. The learner completes a closed-book quiz or code defense.
 10. Based on the evidence, decide whether to proceed to the next section or assign additional practice.
+
+### Learner-directed scope
+
+The learner decides which textbook concepts to include in their notes and which exercises to complete. Omitting a textbook topic or exercise is not, by itself, a defect, evidence of an incomplete learning unit, or a reason to block review or progression.
+
+When reviewing learner-authored notes, Codex must primarily check the correctness, precision, and internal consistency of what the learner actually wrote. Codex may briefly flag an omitted concept or exercise only when it has unusually high foundational, practical, or prerequisite value. Such reminders must be clearly separated from correctness findings and must not become an exhaustive coverage checklist.
 
 ### No-AI boundary for steps 1-4
 
@@ -84,6 +90,13 @@ When asked to review code:
 - Report concrete file and line references.
 - Separate mathematical correctness, Python semantics, numerical stability, API design, test quality, typing, performance, and style.
 - Prefer a few high-value findings over a long list of cosmetic comments.
+
+When reviewing learning notes or selected exercises:
+
+- Treat the learner's chosen scope as intentional.
+- Review recorded content for correctness rather than completeness.
+- Do not require every textbook section or exercise to appear.
+- Put optional high-value omissions in a separate reminder section, not among correctness defects.
 
 ## One-time bootstrap protocol
 
@@ -403,5 +416,7 @@ A task is complete only when:
 - the diff contains no unrelated changes;
 - documentation is updated when behavior or workflow changed;
 - the learner can identify what they should understand or reproduce independently.
+
+For textbook learning units, these criteria apply to the notes, exercises, and implementations the learner selected; unselected textbook material does not automatically make the unit incomplete.
 
 When uncertain, say what is uncertain and verify it rather than guessing.
