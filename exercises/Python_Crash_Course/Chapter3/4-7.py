@@ -9,7 +9,7 @@ print("I would invite " + str(guest) + " for dinner.")
 
 # 假设嘉宾 C 无法赴约, 将 C 换为 D
 
-print("Guset C can't make it to the dinner.")
+print("Guest C can't make it to the dinner.")
 guest[2] = 'D'
 print("I would invite " + str(guest) + " for dinner now.")
 

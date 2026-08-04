@@ -94,6 +94,114 @@ del my_list[:2]
 assert my_list == [3]
 ```
 
+---
+
+## 2026-08-04 — 误以为 `insert()` 的越界索引会引发 `IndexError`
+
+### 学习单元与发现阶段
+
+- 对应章节或单元：《Python Crash Course》第 3 章
+- 发现阶段：闭卷检验
+- 相关提交编号：`c2165ff`
+- Codex 参与情况：Codex 设计并批改小测，随后根据小测答案整理本条目
+
+### 现象
+
+在闭卷判断 `items.insert(99, 4)` 的行为时，误答为抛出 `IndexError`。
+
+### 最小复现
+
+```python
+items = [1, 2, 3]
+result = items.insert(99, 4)
+print(items)   # [1, 2, 3, 4]
+print(result)  # None
+```
+
+### 错误假设
+
+误以为 `list.insert(index, element)` 与按索引读取或删除元素一样，索引超出列表范围时都会抛出 `IndexError`。
+
+### 决定行为的规则
+
+`insert()` 会把索引调整到有效的插入边界：过大的正索引等同于在列表末尾插入，过小的负索引等同于在列表开头插入。它原地修改列表并返回 `None`。这与 `items[index]`、`del items[index]` 等要求索引指向已有元素的操作不同。
+
+### 修正
+
+不能只根据“索引越界”判断所有列表操作都会失败；需要区分访问已有元素和指定插入位置。预测 `insert()` 的结果时，同时检查修改后的列表和返回值。
+
+### 预防测试
+
+```python
+items = [1, 2, 3]
+result = items.insert(99, 4)
+assert items == [1, 2, 3, 4]
+assert result is None
+
+items = [1, 2, 3]
+items.insert(-99, 0)
+assert items == [0, 1, 2, 3]
+```
+
+---
+
+## 2026-08-04 — 混淆列表方法的返回值与运行时异常
+
+### 学习单元与发现阶段
+
+- 对应章节或单元：《Python Crash Course》第 3 章
+- 发现阶段：闭卷检验
+- 相关提交编号：`c2165ff`
+- Codex 参与情况：Codex 设计并批改小测，随后根据小测答案整理本条目
+
+### 现象
+
+闭卷小测中，能够判断 `remove(8)` 会因列表中不存在 `8` 而失败，但没有识别出异常类型为 `ValueError`；同时误以为对非空列表执行合法的 `pop()` 会产生 `SyntaxError`。回答中还使用了“返回错误”的说法，混淆了返回值与抛出异常。
+
+### 最小复现
+
+```python
+items = [1, 2, 3]
+removed = items.pop()
+print(removed)  # 3
+print(items)    # [1, 2]
+
+items = [1, 2, 3]
+items.remove(8)  # 抛出 ValueError
+```
+
+### 错误假设
+
+误以为 `pop()` 本身存在语法问题，并且没有区分正常返回一个值、返回 `None` 与抛出异常这三种不同结果。
+
+### 决定行为的规则
+
+- `pop()` 是合法的方法调用。对非空列表执行不带参数的 `pop()`，会删除并返回最后一个元素；对空列表执行则抛出 `IndexError`。
+- `remove(value)` 按值删除第一个匹配元素，并在成功时返回 `None`；找不到该值时抛出 `ValueError`。
+- `SyntaxError` 表示代码不符合 Python 语法，通常在代码开始执行前被发现。`ValueError` 和 `IndexError` 是代码执行过程中因值或索引不合要求而抛出的运行时异常。
+- 返回值由调用表达式正常产生；异常会中断当前正常执行流程。因此应说“返回某个值”或“抛出某种异常”，而不是“返回异常”。
+
+### 修正
+
+判断方法调用时依次检查：语法是否合法、正常输入下修改了什么、正常返回值是什么，以及什么条件会抛出哪种异常。
+
+### 预防测试
+
+```python
+import pytest
+
+items = [1, 2, 3]
+removed = items.pop()
+assert removed == 3
+assert items == [1, 2]
+
+with pytest.raises(ValueError):
+    items.remove(8)
+
+with pytest.raises(IndexError):
+    [].pop()
+```
+
 ## YYYY-MM-DD — 简短标题
 
 ### 学习单元与发现阶段
