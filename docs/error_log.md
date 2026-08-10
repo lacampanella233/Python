@@ -202,6 +202,182 @@ with pytest.raises(IndexError):
     [].pop()
 ```
 
+---
+
+## 2026-08-11 — 误以为 `range()` 会直接创建列表
+
+### 学习单元与发现阶段
+
+- 对应章节或单元：《Python Crash Course》第 4 章
+- 发现阶段：第一次审阅
+- 相关提交编号：`e858041`
+- Codex 参与情况：Codex 只读审阅时指出错误，学习者随后自行修正笔记
+
+### 现象
+
+笔记最初将 `range()` 描述为“创建等差数列构成的列表”。实际上，Python 3 中的 `range()` 返回 `range` 对象，而不是 `list`。
+
+### 最小复现
+
+```python
+numbers = range(1, 4)
+print(numbers)        # range(1, 4)
+print(type(numbers))  # <class 'range'>
+```
+
+### 错误假设
+
+误以为能够按顺序提供多个值的对象就是列表，并把 `range()` 产生的可迭代序列与由这些值构成的列表混为一谈。
+
+### 决定行为的规则
+
+`range()` 返回不可变的 `range` 序列对象。它可以被遍历、索引和切片，但不是列表，也不提供 `append()` 等列表修改方法。只有显式调用 `list(range(...))` 才会根据该范围创建列表。
+
+### 修正
+
+需要遍历整数范围时直接使用 `range()`；只有确实需要列表对象或列表方法时，才使用 `list(range(...))`。
+
+### 预防测试
+
+```python
+numbers = range(1, 4)
+assert isinstance(numbers, range)
+assert not isinstance(numbers, list)
+assert list(numbers) == [1, 2, 3]
+```
+
+---
+
+## 2026-08-11 — 混淆列表别名、重新绑定与浅复制
+
+### 学习单元与发现阶段
+
+- 对应章节或单元：《Python Crash Course》第 4 章
+- 发现阶段：第一次审阅后的讨论与第二次审阅
+- 相关提交编号：`e858041`（原始学习成果；后续修正尚未提交）
+- Codex 参与情况：Codex 只读审阅并解释对象、变量绑定和浅复制；学习者自行修改笔记和示例
+
+### 现象
+
+笔记最初把 `new_list = old_list` 当作一种列表复制，并认为使用 `old_list[:]` 后，无论如何修改其中一份列表都不会影响另一份。讨论“重新赋值”时，还一度误以为单独执行 `old_list = [1]` 会自动改变 `new_list`。
+
+### 最小复现
+
+```python
+old_list = [1]
+new_list = old_list
+
+old_list.append(2)
+print(new_list)  # [1, 2]：两个变量指向同一个列表
+
+old_list = [100]
+print(old_list)  # [100]
+print(new_list)  # [1, 2]：重新绑定 old_list 不会改变 new_list 的指向
+```
+
+浅复制对嵌套可变对象仍然可能共享内部状态：
+
+```python
+old_list = [[1]]
+new_list = old_list[:]
+
+old_list[0].append(2)
+print(new_list)  # [[1, 2]]
+```
+
+### 错误假设
+
+- 误以为赋值语句总会复制赋值号右侧的对象。
+- 没有区分修改现有对象与让变量名重新指向另一个对象。
+- 误以为切片复制会递归复制列表中的所有对象。
+
+### 决定行为的规则
+
+- `new_list = old_list` 不复制列表，而是让两个变量指向同一个列表对象；通过任一变量进行原地修改，都能通过另一个变量观察到。
+- `old_list = [100]` 会创建新列表并重新绑定 `old_list`。它不会修改旧列表，也不会改变 `new_list` 的绑定。
+- `old_list[:]` 创建新的外层列表，但属于浅复制；新旧外层列表中的对应元素仍可能指向同一个可变对象。
+- `==` 比较值是否相等，`is` 判断是否为同一个对象。
+
+### 修正
+
+描述列表行为时，分别说明变量绑定、对象身份和是否原地修改。需要独立外层列表时可使用切片或 `list.copy()`；需要复制嵌套可变对象时，应先判断是否确实需要深复制及其语义。
+
+### 预防测试
+
+```python
+old_list = [1]
+alias = old_list
+copied = old_list[:]
+
+assert alias is old_list
+assert copied == old_list
+assert copied is not old_list
+
+old_list.append(2)
+assert alias == [1, 2]
+assert copied == [1]
+
+old_list = [100]
+assert alias == [1, 2]
+```
+
+---
+
+## 2026-08-11 — 混淆元组的语法与变量重新绑定
+
+### 学习单元与发现阶段
+
+- 对应章节或单元：《Python Crash Course》第 4 章
+- 发现阶段：第二次审阅
+- 相关提交编号：`e858041`（原始学习成果；后续修正尚未提交）
+- Codex 参与情况：Codex 只读审阅时指出错误，学习者随后自行修正元组的定义
+
+### 现象
+
+笔记最初认为圆括号是元组的决定性标志，并把变量改为指向另一个元组描述成“修改元组的值”。
+
+### 最小复现
+
+```python
+not_a_tuple = (1)
+one_item_tuple = (1,)
+tuple_without_parentheses = 1, 2
+
+print(type(not_a_tuple))              # <class 'int'>
+print(type(one_item_tuple))           # <class 'tuple'>
+print(type(tuple_without_parentheses))  # <class 'tuple'>
+```
+
+### 错误假设
+
+误以为圆括号本身会创建元组，并误以为把变量重新赋值为另一个元组会修改原来的元组对象。
+
+### 决定行为的规则
+
+元组由逗号形成；圆括号通常用于分组和提高可读性。单元素元组必须包含尾随逗号。元组对象创建后不能给其中的位置重新赋值；执行 `my_tuple = (4, 5, 6)` 只是让变量 `my_tuple` 指向一个新元组，并没有修改原元组。
+
+### 修正
+
+创建单元素元组时写成 `(value,)`。描述后续赋值时使用“变量重新绑定到新元组”，而不是“修改原元组”。
+
+### 预防测试
+
+```python
+assert not isinstance((1), tuple)
+assert isinstance((1,), tuple)
+assert isinstance((1, 2), tuple)
+
+original = (1, 2, 3)
+current = original
+current = (4, 5, 6)
+assert original == (1, 2, 3)
+assert current == (4, 5, 6)
+```
+
+---
+
+
+
 ## YYYY-MM-DD — 简短标题
 
 ### 学习单元与发现阶段
